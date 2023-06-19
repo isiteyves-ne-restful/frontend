@@ -55,13 +55,6 @@ export const EmployeeLaptops = () => {
       updatedAt: "2023-06-19T11:53:21.000Z",
     },
   ]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [pages, setPages] = useState(0);
-  const [modalShown, setmodalShown] = useState({
-    shown: false,
-    component: null,
-  });
-
   const closeModal = async (shouldNotFetch = true) => {
     setmodalShown({ shown: false, component: null });
     if (!shouldNotFetch) {
@@ -70,6 +63,12 @@ export const EmployeeLaptops = () => {
       setLoading(false);
     }
   };
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pages, setPages] = useState(0);
+  const [modalShown, setmodalShown] = useState({
+    shown: true,
+    component: <NewVehicle closeModal={closeModal} />,
+  });
 
   const openModal = (component) => {
     if (!component) {
