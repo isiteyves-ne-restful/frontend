@@ -12,11 +12,7 @@ function App() {
       <ToastContainer />
       <Router>
         <Routes>
-          <Route
-            path="/"
-            exact
-            element={<PrivateRoute element={EmployeeLaptops} />}
-          />
+          <Route path="/" exact element={<PublicRoute element={Login} />} />
           <Route
             path="/login"
             exact

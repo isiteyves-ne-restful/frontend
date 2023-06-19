@@ -87,9 +87,9 @@ const Sidebar = () => {
           Equipment Distribution System
         </div>
         <div className="sidebar__sublogo flex justify-center">
-          Welcome
+          Welcome{" "}
           <span className="px-2 ml-1 py-1 text-center text-white bg-neutral-800">
-            {/* {profile?.names} */}Isite Yves
+            {profile?.names}
           </span>
         </div>
         <div ref={sidebarRef} className="sidebar__menu">

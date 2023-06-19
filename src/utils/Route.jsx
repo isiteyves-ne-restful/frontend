@@ -6,13 +6,15 @@ import Sidebar from "../components/sidebar/Sidebar";
 export const PrivateRoute = ({ element: Component, ...rest }) => {
   const hasToken = !!localStorage.getItem("token"); // Check if token exists in local storage
 
-  return (
+  return hasToken ? (
     <div className="app">
       <Sidebar />{" "}
       <div className="app-content">
         <Component {...rest} />
       </div>
     </div>
+  ) : (
+    <Navigate to="/login" replace />
   );
 };
 
