@@ -39,6 +39,21 @@ export const EmployeeLaptops = () => {
       createdAt: "2023-06-19T11:39:35.000Z",
       updatedAt: "2023-06-19T11:39:35.000Z",
     },
+    {
+      id: 6,
+      firstname: "Tyrean",
+      lastname: "Eric",
+      nationalIdentity: "1200384784383454",
+      telephone: "0788734743",
+      email: "eric@gmail.com",
+      department: "Design",
+      position: "Junior",
+      laptopManufacturer: "HP",
+      model: "envy",
+      serialNumber: "48374",
+      createdAt: "2023-06-19T11:53:21.000Z",
+      updatedAt: "2023-06-19T11:53:21.000Z",
+    },
   ]);
   const [currentPage, setCurrentPage] = useState(0);
   const [pages, setPages] = useState(0);
@@ -72,17 +87,17 @@ export const EmployeeLaptops = () => {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
-      await fetchTableData();
-      setLoading(false);
-    }
-    fetchData();
+    // async function fetchData() {
+    //   setLoading(true);
+    //   await fetchTableData();
+    //   setLoading(false);
+    // }
+    // fetchData();
   }, []);
 
   const fetchTableData = async () => {
     let response = await sendRequest(API_URL + `/employee-laptop`, "GET");
-    // setData(response.data?.employeeLaptops);
+    setData(response.data?.employeeLaptops);
     // setCurrentPage(response?.data?.data?.currentPage);
     // setPages(response?.data?.data?.totalPages);
     return response;

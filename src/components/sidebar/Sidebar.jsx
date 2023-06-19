@@ -83,11 +83,13 @@ const Sidebar = () => {
         <AiOutlineMenu />
       </div>
       <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
-        <div className="sidebar__logo">Equipment Distribution System</div>
+        <div className="sidebar__logo text-center">
+          Equipment Distribution System
+        </div>
         <div className="sidebar__sublogo flex justify-center">
-          Welcome{" "}
+          Welcome
           <span className="px-2 ml-1 py-1 text-center text-white bg-neutral-800">
-            {profile?.names}
+            {/* {profile?.names} */}Isite Yves
           </span>
         </div>
         <div ref={sidebarRef} className="sidebar__menu">
