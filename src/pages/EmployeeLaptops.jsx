@@ -8,7 +8,38 @@ import ModalContainer from "../components/forms/ModalContainer";
 
 export const EmployeeLaptops = () => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+      id: 4,
+      firstname: "Samanta",
+      lastname: "ISHIMWE",
+      nationalIdentity: "12000710913307",
+      telephone: "0788888888",
+      email: "samanta@gmail.com",
+      department: "Human resource",
+      position: "Manager",
+      laptopManufacturer: "HP",
+      model: "envy",
+      serialNumber: "3400",
+      createdAt: "2023-06-19T10:21:36.000Z",
+      updatedAt: "2023-06-19T10:21:36.000Z",
+    },
+    {
+      id: 5,
+      firstname: "Isite",
+      lastname: "Yves",
+      nationalIdentity: "1200447374747",
+      telephone: "0782457023",
+      email: "yvesisite@gmail.com",
+      department: "Dev",
+      position: "Senior",
+      laptopManufacturer: "Dell",
+      model: "envy",
+      serialNumber: "3485",
+      createdAt: "2023-06-19T11:39:35.000Z",
+      updatedAt: "2023-06-19T11:39:35.000Z",
+    },
+  ]);
   const [currentPage, setCurrentPage] = useState(0);
   const [pages, setPages] = useState(0);
   const [modalShown, setmodalShown] = useState({
@@ -51,7 +82,7 @@ export const EmployeeLaptops = () => {
 
   const fetchTableData = async () => {
     let response = await sendRequest(API_URL + `/employee-laptop`, "GET");
-    setData(response.data?.employeeLaptops);
+    // setData(response.data?.employeeLaptops);
     // setCurrentPage(response?.data?.data?.currentPage);
     // setPages(response?.data?.data?.totalPages);
     return response;

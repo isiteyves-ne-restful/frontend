@@ -20,19 +20,9 @@ const NewRecord = ({ closeModal }) => {
     e.preventDefault();
     setlocalSending(true);
     try {
-      let response = await sendRequest(
-        API_URL + "/vehicles/register",
-        "POST",
-        data
-      );
-      if (response?.data?.status == 201) {
-        successToast("Successfully registered the vehicle");
-        closeModal(false);
-      } else {
-        errorToast(
-          response?.data?.message || "Error occurred while registering"
-        );
-      }
+      await sendRequest(API_URL + "/employee-laptop", "POST", data);
+      successToast("Successfully registered the new record");
+      closeModal(false);
     } catch (error) {
       errorToast(error?.response?.data?.message || "An error occurred");
     }
@@ -41,7 +31,7 @@ const NewRecord = ({ closeModal }) => {
 
   return (
     <>
-      <div className="form-holder">
+      <div className="form-holder mt-60">
         <div className="form-header text-white flex justify-center items-center relative">
           {"Register Employee Laptop"}
           <FaTimes
@@ -51,55 +41,18 @@ const NewRecord = ({ closeModal }) => {
         </div>
         <div className="form-content bg-white p-4">
           <form className="form" onSubmit={handleSubmit}>
-            <div className="w-full ">
-              <div className="flex flex-col items-center  justify-center">
+            <div className="w-full">
+              <div className="flex flex-col items-center justify-center">
                 <div className="form-row">
                   <div className="form-group">
                     <Input
                       type="text"
-                      labelName="Chasis number"
-                      name="chasisNumber"
+                      labelName="First Name"
+                      name="firstname"
                       onChange={inputHandler}
-                      defaultInputValue={data.chasisNumber || ""}
-                    ></Input>
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group">
-                    <Input
-                      type="text"
-                      labelName="Manufacture company"
-                      name="manufactureCompany"
-                      onChange={inputHandler}
-                      defaultInputValue={data.manufactureCompany || ""}
-                    ></Input>
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group">
-                    <Input
-                      type="number"
-                      labelName="Manufacture Year"
-                      name="manufactureYear"
-                      onChange={inputHandler}
-                      defaultInputValue={data.manufactureYear || ""}
+                      defaultInputValue={data.firstname || ""}
                       required={true}
-                    ></Input>
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group">
-                    <Input
-                      type="number"
-                      labelName="Price"
-                      name="price"
-                      onChange={inputHandler}
-                      defaultInputValue={data.price || ""}
-                      required={true}
-                    ></Input>
+                    />
                   </div>
                 </div>
 
@@ -107,17 +60,121 @@ const NewRecord = ({ closeModal }) => {
                   <div className="form-group">
                     <Input
                       type="text"
-                      labelName="Model name"
-                      name="modelName"
+                      labelName="Last Name"
+                      name="lastname"
                       onChange={inputHandler}
-                      defaultInputValue={data.modelName || ""}
+                      defaultInputValue={data.lastname || ""}
                       required={true}
-                    ></Input>
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <Input
+                      type="text"
+                      labelName="National Identity"
+                      name="nationalIdentity"
+                      onChange={inputHandler}
+                      defaultInputValue={data.nationalIdentity || ""}
+                      required={true}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <Input
+                      type="tel"
+                      labelName="Telephone"
+                      name="telephone"
+                      onChange={inputHandler}
+                      defaultInputValue={data.telephone || ""}
+                      required={true}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <Input
+                      type="email"
+                      labelName="Email"
+                      name="email"
+                      onChange={inputHandler}
+                      defaultInputValue={data.email || ""}
+                      required={true}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <Input
+                      type="text"
+                      labelName="Department"
+                      name="department"
+                      onChange={inputHandler}
+                      defaultInputValue={data.department || ""}
+                      required={true}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <Input
+                      type="text"
+                      labelName="Position"
+                      name="position"
+                      onChange={inputHandler}
+                      defaultInputValue={data.position || ""}
+                      required={true}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <Input
+                      type="text"
+                      labelName="Laptop Manufacturer"
+                      name="laptopManufacturer"
+                      onChange={inputHandler}
+                      defaultInputValue={data.laptopManufacturer || ""}
+                      required={true}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <Input
+                      type="text"
+                      labelName="Model"
+                      name="model"
+                      onChange={inputHandler}
+                      defaultInputValue={data.model || ""}
+                      required={true}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <Input
+                      type="text"
+                      labelName="Serial Number"
+                      name="serialNumber"
+                      onChange={inputHandler}
+                      defaultInputValue={data.serialNumber || ""}
+                      required={true}
+                    />
                   </div>
                 </div>
 
                 <button type="submit" className="save-btn">
-                  {localSending ? "wait..." : "Register"}
+                  {localSending ? "Wait..." : "Register"}
                 </button>
               </div>
             </div>
