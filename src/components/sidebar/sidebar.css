@@ -1,0 +1,116 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  max-width: 20%;
+  background-color: #f2f2f2 !important;
+  overflow: hidden;
+  transition: max-width 0.3s ease-in-out;
+}
+.sidebar.open {
+  max-width: 100%;
+}
+.sidebar__logo {
+  display: grid;
+  place-items: center;
+  height: 120px;
+  font-size: 1.2rem;
+  color: rgb(34, 114, 195);
+  font-weight: 700;
+}
+.sidebar__sublogo {
+  margin-top: -20%;
+  display: grid;
+  place-items: center;
+  height: 120px;
+  font-size: 0.9rem;
+  color: rgb(94, 94, 94);
+  font-weight: 700;
+}
+.sidebar__menu {
+  position: relative;
+}
+.sidebar__menu__item {
+  display: flex;
+  align-items: center;
+  place-content: flex-start;
+  padding: 1rem 1.4rem;
+  font-size: 15px;
+  font-weight: 500;
+  color: #555555;
+}
+.sidebar__menu__item.active {
+  color: #fff;
+  background-color: rgb(34, 114, 195);
+}
+.sidebar__menu__item__icon {
+  margin-right: 1rem;
+}
+.sidebar__menu__item__icon i {
+  font-size: 1.75rem;
+}
+.sidebar__logout {
+  margin-top: 50%;
+  position: relative;
+}
+.sidebar__logout__item {
+  display: flex;
+  align-items: center;
+  place-content: flex-start;
+  padding: 1rem 3rem;
+  font-size: 19px;
+  font-weight: 500;
+  color: rgb(34, 114, 195);
+}
+.sidebar__logout__item__icon {
+  margin-right: 1rem;
+}
+.sidebar__logout__item__icon i {
+  font-size: 1.75rem;
+}
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+    max-width: 0;
+    transition: max-width 0.3s ease-in-out;
+  }
+  .sidebar.open {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    max-width: 20%;
+  }
+}
+.sidebar__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  color: #555555;
+  margin-top: 2%;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: transparent !important;
+}
+@media (max-width: 767px) {
+  .sidebar__toggle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: #f2f2f2;
+    transition: background-color 0.3s ease-in-out;
+  }
+}
+
+@media (min-width: 768px) {
+  .sidebar__toggle {
+    display: none;
+  }
+}/*# sourceMappingURL=sidebar.css.map */
