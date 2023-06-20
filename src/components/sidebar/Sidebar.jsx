@@ -88,7 +88,7 @@ const Sidebar = () => {
         </div>
         <div className="sidebar__sublogo flex justify-center">
           Welcome{" "}
-          <span className="px-2 ml-1 py-1 text-center text-white bg-neutral-800">
+          <span className="px-2 ml-1 py-1 text-center text-white bg-[#2272C3] rounded-md">
             {profile?.names}
           </span>
         </div>

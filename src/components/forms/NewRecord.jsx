@@ -18,8 +18,32 @@ const NewRecord = ({ closeModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setlocalSending(true);
     try {
+      // validate all fields to make sure they are not empty
+      if (
+        !data?.firstname ||
+        !data?.lastname ||
+        !data?.nationalIdentity ||
+        !data?.email ||
+        !data?.telephone ||
+        !data?.position ||
+        !data?.department ||
+        !data?.model ||
+        !data?.serialNumber
+      ) {
+        errorToast("All fields are required");
+        return;
+      }
+      // validate email and phone
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data?.email)) {
+        errorToast("Invalid email address");
+        return;
+      }
+      if (!/^[0-9]{10}$/.test(data?.telephone)) {
+        errorToast("Invalid phone number");
+        return;
+      }
+      setlocalSending(true);
       await sendRequest(API_URL + "/employee-laptop", "POST", data);
       successToast("Successfully registered the new record");
       closeModal(false);
@@ -50,7 +74,7 @@ const NewRecord = ({ closeModal }) => {
                       labelName="First Name"
                       name="firstname"
                       onChange={inputHandler}
-                      defaultInputValue={data.firstname || ""}
+                      defaultInputValue={data?.firstname || ""}
                       required={true}
                     />
                   </div>
@@ -63,7 +87,7 @@ const NewRecord = ({ closeModal }) => {
                       labelName="Last Name"
                       name="lastname"
                       onChange={inputHandler}
-                      defaultInputValue={data.lastname || ""}
+                      defaultInputValue={data?.lastname || ""}
                       required={true}
                     />
                   </div>
@@ -76,7 +100,7 @@ const NewRecord = ({ closeModal }) => {
                       labelName="National Identity"
                       name="nationalIdentity"
                       onChange={inputHandler}
-                      defaultInputValue={data.nationalIdentity || ""}
+                      defaultInputValue={data?.nationalIdentity || ""}
                       required={true}
                     />
                   </div>
@@ -89,7 +113,7 @@ const NewRecord = ({ closeModal }) => {
                       labelName="Telephone"
                       name="telephone"
                       onChange={inputHandler}
-                      defaultInputValue={data.telephone || ""}
+                      defaultInputValue={data?.telephone || ""}
                       required={true}
                     />
                   </div>
@@ -102,7 +126,7 @@ const NewRecord = ({ closeModal }) => {
                       labelName="Email"
                       name="email"
                       onChange={inputHandler}
-                      defaultInputValue={data.email || ""}
+                      defaultInputValue={data?.email || ""}
                       required={true}
                     />
                   </div>
@@ -115,7 +139,7 @@ const NewRecord = ({ closeModal }) => {
                       labelName="Department"
                       name="department"
                       onChange={inputHandler}
-                      defaultInputValue={data.department || ""}
+                      defaultInputValue={data?.department || ""}
                       required={true}
                     />
                   </div>
@@ -128,7 +152,7 @@ const NewRecord = ({ closeModal }) => {
                       labelName="Position"
                       name="position"
                       onChange={inputHandler}
-                      defaultInputValue={data.position || ""}
+                      defaultInputValue={data?.position || ""}
                       required={true}
                     />
                   </div>
@@ -141,7 +165,7 @@ const NewRecord = ({ closeModal }) => {
                       labelName="Laptop Manufacturer"
                       name="laptopManufacturer"
                       onChange={inputHandler}
-                      defaultInputValue={data.laptopManufacturer || ""}
+                      defaultInputValue={data?.laptopManufacturer || ""}
                       required={true}
                     />
                   </div>
@@ -154,7 +178,7 @@ const NewRecord = ({ closeModal }) => {
                       labelName="Model"
                       name="model"
                       onChange={inputHandler}
-                      defaultInputValue={data.model || ""}
+                      defaultInputValue={data?.model || ""}
                       required={true}
                     />
                   </div>
@@ -167,7 +191,7 @@ const NewRecord = ({ closeModal }) => {
                       labelName="Serial Number"
                       name="serialNumber"
                       onChange={inputHandler}
-                      defaultInputValue={data.serialNumber || ""}
+                      defaultInputValue={data?.serialNumber || ""}
                       required={true}
                     />
                   </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { errorToast, successToast } from "../utils/Toast";
 import { Input } from "../components/Input";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../utils/Api";
 
@@ -13,18 +13,21 @@ export const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    // check if there are no exmpty values
     const isFormDataFilled = Object.values(formData).every(
       (value) => value !== ""
     );
 
+    // if there are empty values, show error toast to the user
     if (!isFormDataFilled) {
       errorToast("All fields are required");
       return;
     }
 
+    // start showing the user that we are processing their login request
     setLoading(true);
     try {
       const response = await axios.post(API_URL + "/auth/login", formData);
@@ -46,6 +49,7 @@ export const Login = () => {
     }
   };
 
+  // function to handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({

@@ -3,16 +3,21 @@ import { API_URL, API_DATA_LIMIT, sendRequest } from "../utils/Api";
 import TableComponent from "../components/table/TableComponent";
 import ModalContainer from "../components/forms/ModalContainer";
 import NewRecord from "../components/forms/NewRecord";
+import Pagination from "../components/Pagination/Pagination";
 
 export const EmployeeLaptops = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [pages, setPages] = useState(0);
+  const [activePage, setActivePage] = useState(1);
   const [modalShown, setmodalShown] = useState({
     shown: false,
     component: null,
   });
+
+  const changeActivePage = (newPageNumber) => {
+    setActivePage(newPageNumber);
+    setShownRows(rows.slice(5 * (newPageNumber - 1), newPageNumber * 5));
+  };
 
   const closeModal = async (shouldNotFetch = true) => {
     setmodalShown({ shown: false, component: null });
@@ -105,13 +110,12 @@ export const EmployeeLaptops = () => {
         data={transformData(data)}
         loading={loading}
       />
-      {/* <TablePagination
-        pages={pages}
-        active={currentPage}
-        changePage={changePage}
-        loading={loading}
-      ></TablePagination> */}
-      <div className="flex w-full justify-center">
+      <Pagination
+        numberOfPages={Math.ceil(data.length / 4)}
+        activePage={activePage}
+        changeActivePage={(newPageNumber) => changeActivePage(newPageNumber)}
+      />
+      <div className="flex w-full justify-center mt-5">
         <div className="bg-white flex items-center justify-center w-full">
           <button
             className="button-link"
