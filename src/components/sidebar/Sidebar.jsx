@@ -84,7 +84,7 @@ const Sidebar = () => {
       </div>
       <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
         <div className="sidebar__logo text-center">
-          Equipment Distribution System
+          KALIM Binary Supermarket
         </div>
         <div className="sidebar__sublogo flex justify-center">
           Welcome{" "}
